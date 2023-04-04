@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+	<title>Formulario HTML</title>
+    <link href="p1.css" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <form action="http://alberto.gil.webs.uvigo.es/SINT/22-23/p1.php" class="formulario" id="formulario" method="get" enctype="application/x-www-form-urlencoded">
+        <div class="formulario__grupo" id="grupo__usuario">
+            <label for="usuario" class="formulario__label">Usuario</label>
+            <div class="formulario__grupo-input">
+                <input type="text" class="formulario__input" name="clogin" id="usuario" placeholder="carlos22">
+                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+            </div>
+            <p class="formulario__input-error">El usuario debe de tener de 4 a 8 dígitos y solo puede contener números y letras minúsculas.</p>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__nombre">
+            <label for="nombre" class="formulario__label">Nombre</label>
+            <div class="formulario__grupo-input">
+                <input type="text" class="formulario__input" name="cname" id="nombre" placeholder="Carlos Pérez" pattern="^[a-zA-ZÀ-ÿ]{3,40}[\s][a-zA-ZÀ-ÿ]{3,40}$">
+                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+            </div>
+            <p class="formulario__input-error">El nombre debe de estar compuesto de dos palabras de al menos 3 letras cada una, ya sean mayúsculas o minúsculas.</p>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__password">
+            <label for="password" class="formulario__label">Contraseña</label>
+            <div class="formulario__grupo-input">
+                <input type="password" class="formulario__input" name="cpasswd" id="password">
+                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+            </div>
+            <p class="formulario__input-error">La contraseña debe de tener de 6 a 12 dígitos, de los cuales al menos uno debe ser una letra mayúscula, una minúscula, un número y uno de los siguentes símbolos "+-*/".</p>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__dni">
+            <label for="dni" class="formulario__label">DNI</label>
+            <div class="formulario__grupo-input">
+                <input type="text" class="formulario__input" name="cdni" id="dni" placeholder="23467812L">
+                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+            </div>
+            <p class="formulario__input-error">El DNI debe de estar formado por un primer número del 0 al 7 junto a 7 números del 0 al 9, seguidos de una letra mayúscula.</p>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__correo">
+            <label for="correo" class="formulario__label">Correo Electrónico</label>
+            <div class="formulario__grupo-input">
+                <input type="email" class="formulario__input" name="cemail" id="correo" placeholder="carlos22@gmail.com">
+                <i class="formulario__validacion-estado_correo fas fa-times-circle"></i>
+            </div>
+            <p class="formulario__input-error">El correo debe de tener un formato válido.</p>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__comentario">
+            <label for="comentario" class="formulario__label">Comentario</label>
+            <div class="formulario__grupo-textarea">
+                <textarea class="formulario__textarea" name="ccomment" id="comentario" placeholder="Escriba su comentario aquí..." rows="10" cols="98"></textarea>
+            </div>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__edad">
+            <label for="edad" class="formulario__label">Rango de edad</label>
+            <div class="formulario__grupo-checkbox">
+                <input type="radio" class="formulario__radio" name="cage" id="edad" value="menor de 25">menor de 25<br>
+                <input type="radio" class="formulario__radio" name="cage" value="entre 25 y 40">entre 25 y 40<br>
+                <input type="radio" class="formulario__radio" name="cage" value="entre 40 y 60">entre 40 y 60<br>
+                <input type="radio" class="formulario__radio" name="cage" value="más de 60">más de 60
+            </div>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__generos">
+            <label for="generos" class="formulario__label">Géneros musicales favoritos</label>
+            <div class="formulario__grupo-checkbox">
+                <div class="marcar__todas">
+                    <input type="checkbox" class="formulario__checkbox" id ="generos" name="cgenre[]" value="pop" onclick="check()">pop<br>
+                    <input type="checkbox" class="formulario__checkbox" name="cgenre[]" value="rock" onclick="check()">rock<br>
+                    <input type="checkbox" class="formulario__checkbox" name="cgenre[]" value="country" onclick="check()">country<br>
+                    <input type="checkbox" class="formulario__checkbox" name="cgenre[]" value="rap" onclick="check()">rap<br>
+                    <input type="checkbox" class="formulario__checkbox" name="cgenre[]" value="soul" onclick="check()">soul<br>
+                    <div class="marcar">
+                    <input type="checkbox" class="formulario__checkbox" name="cgenre[]" value="marcar todas las opciones" onclick="checkAll()">marcar todas las opciones<br>
+                    </div>
+                </div>
+                <div class="marcar">
+                <input type="checkbox" class="formulario__checkbox" name="cgenre[]" value="desmarcar todas las opciones" onclick="uncheckAll()">desmarcar todas las opciones
+                </div>
+            </div>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__file">
+            <label for="file" class="formulario__label">Adjuntar archivo</label>
+            <div class="formulario__grupo-input">
+                <input type="file" class="formulario__input" name="cfile" id="file">
+            </div>
+        </div>
+
+        <br>
+
+        <div class="formulario__grupo" id="grupo__internet">
+            <label for="internet" class="formulario__label" id="internet_c">Compañía proovedora de Internet</label><br>
+            <div class="formulario__grupo-option">
+                <select name="cInternet" id="internet">
+                    <option>...</option>
+                    <option value="Movistar">Movistar</option>
+                    <option value="Vodafone">Vodafone</option>
+                    <option value="Orange">Orange</option>
+                    <option value="R">R</option>
+                </select>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="formulario__grupo" id="grupo__envio">
+            <label for="envio" class="formulario__label" id="envio_c">Método de envío</label><br>
+            <div class="formulario__grupo-option">
+                <select name="cmethod" id="envio" onchange="select()">
+                    <option>...</option>
+                    <option value="get">GET</option>
+                    <option value="post">POST</option>
+                </select>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="formulario__grupo" id="grupo__cod">
+            <label for="cod" class="formulario__label" id="cod_c">Método de codificación</label><br>
+            <div class="formulario__grupo-option">
+                <select name="cencoding" id="cod" onchange="select()">
+                    <option>...</option>
+                    <option value="application/x-www-form-urlencoded">application/x-www-form-urlencoded</option>
+                    <option value="multipart/form-data">multipart/form-data</option>
+                </select>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="formulario__mensaje" id="formulario__mensaje">
+            <p><i class="fas fa-exclamation-triangle"></i><b>Error:</b>Por favor rellena el formulario correctamente.</p>
+        </div>
+
+        <div class="formulario__grupo formulario__grupo-btn-reset">
+            <button type="button" class="formulario__btn" onclick="resetear()"><span>RESET</span></button>
+        </div>
+
+        <div class="formulario__grupo formulario__grupo-btn-enviar">
+            <button type="submit" class="formulario__btn" onclick="send()"><span>Enviar</span></button>
+            <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
+        </div>
+
+        <input type="hidden" name="cbrowser" id="cbrowser" value="">
+        <input type="hidden" name="cdate" id="cdate" value="">
+
+        </form>
+    </main>
+
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin ="anonymous"></script>
+    <script src="p1.js"></script>
+
+    <footer>
+        Alejandro Mateo Costa de Dios
+    </footer>
+
+</body>
+</html>
